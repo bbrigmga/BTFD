@@ -9,16 +9,16 @@ const US_EXCHANGES = ['NYSE', 'NASDAQ', 'AMEX', 'BATS'];
 const EU_EXCHANGES = ['LSE', 'FRA', 'AMS', 'SWX', 'BIT', 'BME', 'CPH', 'EPA'];
 
 // API Configuration
-const IEX_BASE_URL = 'https://cloud.iexapis.com/stable';
+const POLYGON_BASE_URL = 'https://api.polygon.io';
 const FINNHUB_BASE_URL = 'https://finnhub.io/api/v1';
 
 class StockDataFetcher {
     constructor() {
-        this.iexApiKey = process.env.IEX_API_KEY;
+        this.polygonApiKey = process.env.IEX_API_KEY; // Using IEX_API_KEY secret name for Polygon.io key
         this.finnhubApiKey = process.env.FINNHUB_API_KEY;
         
-        if (!this.iexApiKey) {
-            console.warn('IEX_API_KEY not found, using sample data');
+        if (!this.polygonApiKey) {
+            console.warn('POLYGON_API_KEY not found, using sample data');
         }
         
         if (!this.finnhubApiKey) {
@@ -32,8 +32,8 @@ class StockDataFetcher {
         try {
             let stocks = [];
             
-            if (this.iexApiKey) {
-                // Fetch US stocks from IEX Cloud
+            if (this.polygonApiKey) {
+                // Fetch US stocks from Polygon.io
                 const usStocks = await this.fetchUSStocks();
                 stocks = stocks.concat(usStocks);
                 console.log(`Fetched ${usStocks.length} US stocks`);
@@ -89,11 +89,11 @@ class StockDataFetcher {
                 'DHR', 'TXN', 'VZ', 'QCOM', 'ABT', 'ORCL', 'WFC', 'AMD', 'INTC'
             ];
             
-            // Fetch data in batches to respect rate limits
-            const batchSize = 10;
+            // Fetch data in batches to respect rate limits (Polygon.io: 5 calls per minute for free tier)
+            const batchSize = 5;
             for (let i = 0; i < majorTickers.length; i += batchSize) {
                 const batch = majorTickers.slice(i, i + batchSize);
-                const batchPromises = batch.map(ticker => this.fetchIEXStock(ticker));
+                const batchPromises = batch.map(ticker => this.fetchPolygonStock(ticker));
                 
                 const batchResults = await Promise.allSettled(batchPromises);
                 
@@ -105,9 +105,9 @@ class StockDataFetcher {
                     }
                 });
                 
-                // Rate limiting delay
+                // Rate limiting delay for Polygon.io free tier (5 calls per minute)
                 if (i + batchSize < majorTickers.length) {
-                    await this.delay(1000); // 1 second delay between batches
+                    await this.delay(12000); // 12 second delay between batches
                 }
             }
             
@@ -118,41 +118,58 @@ class StockDataFetcher {
         return stocks;
     }
 
-    async fetchIEXStock(ticker) {
+    async fetchPolygonStock(ticker) {
         try {
-            const quoteUrl = `${IEX_BASE_URL}/stock/${ticker}/quote?token=${this.iexApiKey}`;
-            const companyUrl = `${IEX_BASE_URL}/stock/${ticker}/company?token=${this.iexApiKey}`;
+            // Get ticker details for company info and market cap
+            const detailsUrl = `${POLYGON_BASE_URL}/v3/reference/tickers/${ticker}?apikey=${this.polygonApiKey}`;
             
-            const [quoteResponse, companyResponse] = await Promise.all([
-                fetch(quoteUrl),
-                fetch(companyUrl)
-            ]);
+            const detailsResponse = await fetch(detailsUrl);
             
-            if (!quoteResponse.ok || !companyResponse.ok) {
-                throw new Error(`HTTP error for ${ticker}`);
+            if (!detailsResponse.ok) {
+                throw new Error(`HTTP error for ${ticker}: ${detailsResponse.status}`);
             }
             
-            const quoteData = await quoteResponse.json();
-            const companyData = await companyResponse.json();
+            const detailsData = await detailsResponse.json();
             
-            if (!quoteData.marketCap || quoteData.marketCap < MARKET_CAP_THRESHOLD) {
+            if (!detailsData.results) {
+                throw new Error(`No data found for ${ticker}`);
+            }
+            
+            const tickerInfo = detailsData.results;
+            
+            // Calculate market cap from shares outstanding and current price
+            // Note: Polygon.io doesn't directly provide market cap, so we'll use a fallback approach
+            const marketCap = tickerInfo.market_cap || (tickerInfo.share_class_shares_outstanding * (tickerInfo.last_quote?.close || 100));
+            
+            if (!marketCap || marketCap < MARKET_CAP_THRESHOLD) {
                 return null;
             }
             
             return {
                 ticker: ticker,
-                companyName: quoteData.companyName || companyData.companyName,
-                marketCap: quoteData.marketCap,
+                companyName: tickerInfo.name,
+                marketCap: marketCap,
                 market: 'US',
-                exchange: quoteData.primaryExchange || 'NASDAQ',
-                domain: this.extractDomain(companyData.website),
-                sector: companyData.sector || 'Unknown'
+                exchange: this.mapPolygonExchange(tickerInfo.primary_exchange),
+                domain: this.extractDomain(tickerInfo.homepage_url),
+                sector: tickerInfo.sic_description || 'Unknown'
             };
             
         } catch (error) {
             console.warn(`Error fetching ${ticker}:`, error.message);
             return null;
         }
+    }
+
+    mapPolygonExchange(exchange) {
+        const exchangeMap = {
+            'XNYS': 'NYSE',
+            'XNAS': 'NASDAQ',
+            'ARCX': 'NYSE Arca',
+            'BATS': 'BATS',
+            'IEXG': 'IEX'
+        };
+        return exchangeMap[exchange] || exchange || 'NASDAQ';
     }
 
     async fetchEuropeanStocks() {
@@ -394,7 +411,7 @@ class StockDataFetcher {
     async saveStockData(stocks) {
         const data = {
             lastUpdated: new Date().toISOString(),
-            dataSource: this.iexApiKey ? 'IEX Cloud API' : 'Sample Data',
+            dataSource: this.polygonApiKey ? 'Polygon.io API' : 'Sample Data',
             totalStocks: stocks.length,
             stocks: stocks
         };
