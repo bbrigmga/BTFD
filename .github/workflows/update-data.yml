@@ -32,7 +32,7 @@ jobs:
     
     - name: Fetch stock data
       env:
-        IEX_API_KEY: ${{ secrets.IEX_API_KEY }} # Actually contains Polygon.io API key
+        POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
         FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
       run: node scripts/fetch-data.js
     

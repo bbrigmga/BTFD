@@ -19,7 +19,7 @@ Visit the live website: [Your GitHub Pages URL]
 
 ## 📊 Data Sources
 
-- **Primary**: [IEX Cloud](https://iexcloud.io/) - US market data
+- **Primary**: [Polygon.io](https://polygon.io/) - US market data
 - **Secondary**: [Finnhub](https://finnhub.io/) - European market data
 - **Logos**: [Clearbit Logo API](https://clearbit.com/logo) - Company logos
 
@@ -29,7 +29,7 @@ Visit the live website: [Your GitHub Pages URL]
 - **Architecture**: JAMstack (JavaScript, APIs, Markup)
 - **Hosting**: GitHub Pages
 - **Automation**: GitHub Actions
-- **APIs**: IEX Cloud, Finnhub, Clearbit Logo API
+- **APIs**: Polygon.io, Finnhub, Clearbit Logo API
 
 ## 🚀 Quick Start
 
@@ -65,10 +65,10 @@ Open your browser to `http://localhost:8000`
 
 ### 1. Get API Keys
 
-#### IEX Cloud (Required for US stocks)
-1. Sign up at [IEX Cloud](https://iexcloud.io/)
-2. Get your free API token (50,000 calls/month)
-3. Note your publishable token
+#### Polygon.io (Required for US stocks)
+1. Sign up at [Polygon.io](https://polygon.io/)
+2. Get your free API key (5 calls/minute, 50,000 calls/month)
+3. Note your API key
 
 #### Finnhub (Optional for European stocks)
 1. Sign up at [Finnhub](https://finnhub.io/)
@@ -84,7 +84,7 @@ Open your browser to `http://localhost:8000`
 #### Add API Keys as Secrets
 1. Go to repository Settings → Secrets and variables → Actions
 2. Add the following secrets:
-   - `IEX_API_KEY`: Your IEX Cloud token
+   - `POLYGON_API_KEY`: Your Polygon.io API key
    - `FINNHUB_API_KEY`: Your Finnhub API key (optional)
 
 ### 3. Update Configuration
@@ -171,16 +171,23 @@ npm run fetch-data
 Edit `scripts/fetch-data.js` and add tickers to the appropriate arrays:
 
 ```javascript
-// For US stocks
+// For US stocks (add to majorTickers array)
 const majorTickers = [
     'AAPL', 'MSFT', 'GOOGL', 'YOUR_TICKER'
+    // ... 80+ other major stocks already included
 ];
 
-// For European stocks
+// For European stocks (add to europeanTickers array)
 const europeanTickers = [
-    { symbol: 'ASML.AS', name: 'ASML Holding N.V.', domain: 'asml.com' }
+    { symbol: 'YOUR_SYMBOL.EX', name: 'Company Name', domain: 'company.com' }
+    // ... 18+ European stocks already included
 ];
 ```
+
+**Current Stock Coverage:**
+- **US Stocks**: 80+ major companies including all mega-cap (>$1T) and large-cap (>$200B) stocks
+- **European Stocks**: 18+ major European companies from Netherlands, Switzerland, Denmark, France, Germany, and UK
+- **Total Expected**: 50-60+ stocks with market cap > $200B (depending on current market conditions)
 
 ### Styling Changes
 
@@ -264,7 +271,7 @@ This website is for informational purposes only and does not constitute investme
 
 ## 🙏 Acknowledgments
 
-- [IEX Cloud](https://iexcloud.io/) for US market data
+- [Polygon.io](https://polygon.io/) for US market data
 - [Finnhub](https://finnhub.io/) for European market data
 - [Clearbit](https://clearbit.com/logo) for company logos
 - [GitHub Pages](https://pages.github.com/) for free hosting

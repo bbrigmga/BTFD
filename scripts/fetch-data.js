@@ -14,7 +14,7 @@ const FINNHUB_BASE_URL = 'https://finnhub.io/api/v1';
 
 class StockDataFetcher {
     constructor() {
-        this.polygonApiKey = process.env.IEX_API_KEY; // Using IEX_API_KEY secret name for Polygon.io key
+        this.polygonApiKey = process.env.POLYGON_API_KEY;
         this.finnhubApiKey = process.env.FINNHUB_API_KEY;
         
         if (!this.polygonApiKey) {
@@ -82,11 +82,20 @@ class StockDataFetcher {
         try {
             // Get list of major US stocks (S&P 500 components or similar)
             const majorTickers = [
-                'AAPL', 'MSFT', 'GOOGL', 'GOOG', 'AMZN', 'NVDA', 'BRK.A', 'BRK.B',
-                'TSLA', 'META', 'UNH', 'JNJ', 'V', 'WMT', 'XOM', 'JPM', 'PG', 'MA',
-                'CVX', 'HD', 'ABBV', 'PFE', 'KO', 'AVGO', 'PEP', 'TMO', 'COST',
-                'MRK', 'BAC', 'NFLX', 'CRM', 'ACN', 'LLY', 'ADBE', 'CSCO', 'NKE',
-                'DHR', 'TXN', 'VZ', 'QCOM', 'ABT', 'ORCL', 'WFC', 'AMD', 'INTC'
+                // Mega-cap stocks (>$1T)
+                'AAPL', 'MSFT', 'GOOGL', 'GOOG', 'AMZN', 'NVDA', 'META', 'TSLA',
+                
+                // Large-cap stocks ($200B+)
+                'BRK.A', 'BRK.B', 'UNH', 'JNJ', 'V', 'WMT', 'XOM', 'JPM', 'PG', 'MA',
+                'CVX', 'HD', 'ABBV', 'PFE', 'KO', 'AVGO', 'PEP', 'TMO', 'COST', 'MRK',
+                'BAC', 'NFLX', 'CRM', 'ACN', 'LLY', 'ADBE', 'CSCO', 'NKE', 'DHR', 'TXN',
+                'VZ', 'QCOM', 'ABT', 'ORCL', 'WFC', 'AMD', 'INTC', 'CMCSA', 'DIS', 'PM',
+                'SPGI', 'NOW', 'INTU', 'CAT', 'GS', 'RTX', 'BKNG', 'HON', 'IBM', 'AMGN',
+                'LOW', 'UPS', 'T', 'SBUX', 'AXP', 'BLK', 'GILD', 'MDT', 'C', 'LRCX',
+                'ISRG', 'TJX', 'SCHW', 'MU', 'AMAT', 'PANW', 'SYK', 'VRTX', 'ADI', 'TMUS',
+                'PLD', 'MDLZ', 'CB', 'SO', 'REGN', 'ZTS', 'MMC', 'KLAC', 'ICE', 'DUK',
+                'PYPL', 'AON', 'EQIX', 'APD', 'CME', 'CDNS', 'MSI', 'SNPS', 'ITW', 'WM',
+                'CL', 'GD', 'ADSK', 'USB', 'TFC', 'MMM', 'PNC', 'ORLY', 'FCX', 'SHW'
             ];
             
             // Fetch data in batches to respect rate limits (Polygon.io: 5 calls per minute for free tier)
@@ -178,14 +187,37 @@ class StockDataFetcher {
         try {
             // Major European stocks
             const europeanTickers = [
+                // Netherlands
                 { symbol: 'ASML.AS', name: 'ASML Holding N.V.', domain: 'asml.com' },
+                { symbol: 'SHELL.AS', name: 'Shell plc', domain: 'shell.com' },
+                
+                // Switzerland
                 { symbol: 'NESN.SW', name: 'Nestlé S.A.', domain: 'nestle.com' },
+                { symbol: 'NOVN.SW', name: 'Novartis AG', domain: 'novartis.com' },
+                { symbol: 'ROG.SW', name: 'Roche Holding AG', domain: 'roche.com' },
+                
+                // Denmark
                 { symbol: 'NOVO-B.CO', name: 'Novo Nordisk A/S', domain: 'novonordisk.com' },
+                
+                // France
                 { symbol: 'MC.PA', name: 'LVMH Moët Hennessy Louis Vuitton SE', domain: 'lvmh.com' },
                 { symbol: 'RMS.PA', name: 'Hermès International S.A.', domain: 'hermes.com' },
-                { symbol: 'SAP.DE', name: 'SAP SE', domain: 'sap.com' },
                 { symbol: 'OR.PA', name: "L'Oréal S.A.", domain: 'loreal.com' },
-                { symbol: 'TTE.PA', name: 'TotalEnergies SE', domain: 'totalenergies.com' }
+                { symbol: 'TTE.PA', name: 'TotalEnergies SE', domain: 'totalenergies.com' },
+                { symbol: 'SAN.PA', name: 'Sanofi', domain: 'sanofi.com' },
+                { symbol: 'AIR.PA', name: 'Airbus SE', domain: 'airbus.com' },
+                
+                // Germany
+                { symbol: 'SAP.DE', name: 'SAP SE', domain: 'sap.com' },
+                { symbol: 'SIE.DE', name: 'Siemens AG', domain: 'siemens.com' },
+                
+                // UK (ADRs trading in US)
+                { symbol: 'AZN', name: 'AstraZeneca PLC', domain: 'astrazeneca.com' },
+                { symbol: 'SHEL', name: 'Shell plc', domain: 'shell.com' },
+                { symbol: 'UL', name: 'Unilever PLC', domain: 'unilever.com' },
+                
+                // Taiwan
+                { symbol: 'TSM', name: 'Taiwan Semiconductor Manufacturing Company Limited', domain: 'tsmc.com' }
             ];
             
             for (const stock of europeanTickers) {
@@ -270,6 +302,7 @@ class StockDataFetcher {
 
     getSampleData() {
         return [
+            // Mega-cap US stocks (>$1T)
             {
                 ticker: 'AAPL',
                 companyName: 'Apple Inc.',
@@ -316,13 +349,13 @@ class StockDataFetcher {
                 sector: 'Technology'
             },
             {
-                ticker: 'BRK.A',
-                companyName: 'Berkshire Hathaway Inc.',
-                marketCap: 900000000000,
+                ticker: 'META',
+                companyName: 'Meta Platforms Inc.',
+                marketCap: 750000000000,
                 market: 'US',
-                exchange: 'NYSE',
-                domain: 'berkshirehathaway.com',
-                sector: 'Financial Services'
+                exchange: 'NASDAQ',
+                domain: 'meta.com',
+                sector: 'Technology'
             },
             {
                 ticker: 'TSLA',
@@ -333,14 +366,16 @@ class StockDataFetcher {
                 domain: 'tesla.com',
                 sector: 'Consumer Discretionary'
             },
+            
+            // Large-cap US stocks ($200B+)
             {
-                ticker: 'META',
-                companyName: 'Meta Platforms Inc.',
-                marketCap: 750000000000,
+                ticker: 'BRK.A',
+                companyName: 'Berkshire Hathaway Inc.',
+                marketCap: 900000000000,
                 market: 'US',
-                exchange: 'NASDAQ',
-                domain: 'meta.com',
-                sector: 'Technology'
+                exchange: 'NYSE',
+                domain: 'berkshirehathaway.com',
+                sector: 'Financial Services'
             },
             {
                 ticker: 'UNH',
@@ -352,6 +387,15 @@ class StockDataFetcher {
                 sector: 'Healthcare'
             },
             {
+                ticker: 'V',
+                companyName: 'Visa Inc.',
+                marketCap: 520000000000,
+                market: 'US',
+                exchange: 'NYSE',
+                domain: 'visa.com',
+                sector: 'Financial Services'
+            },
+            {
                 ticker: 'JNJ',
                 companyName: 'Johnson & Johnson',
                 marketCap: 450000000000,
@@ -361,14 +405,223 @@ class StockDataFetcher {
                 sector: 'Healthcare'
             },
             {
-                ticker: 'V',
-                companyName: 'Visa Inc.',
-                marketCap: 520000000000,
+                ticker: 'WMT',
+                companyName: 'Walmart Inc.',
+                marketCap: 480000000000,
                 market: 'US',
                 exchange: 'NYSE',
-                domain: 'visa.com',
+                domain: 'walmart.com',
+                sector: 'Consumer Staples'
+            },
+            {
+                ticker: 'JPM',
+                companyName: 'JPMorgan Chase & Co.',
+                marketCap: 460000000000,
+                market: 'US',
+                exchange: 'NYSE',
+                domain: 'jpmorganchase.com',
                 sector: 'Financial Services'
             },
+            {
+                ticker: 'PG',
+                companyName: 'The Procter & Gamble Company',
+                marketCap: 380000000000,
+                market: 'US',
+                exchange: 'NYSE',
+                domain: 'pg.com',
+                sector: 'Consumer Staples'
+            },
+            {
+                ticker: 'MA',
+                companyName: 'Mastercard Incorporated',
+                marketCap: 400000000000,
+                market: 'US',
+                exchange: 'NYSE',
+                domain: 'mastercard.com',
+                sector: 'Financial Services'
+            },
+            {
+                ticker: 'HD',
+                companyName: 'The Home Depot Inc.',
+                marketCap: 350000000000,
+                market: 'US',
+                exchange: 'NYSE',
+                domain: 'homedepot.com',
+                sector: 'Consumer Discretionary'
+            },
+            {
+                ticker: 'CVX',
+                companyName: 'Chevron Corporation',
+                marketCap: 290000000000,
+                market: 'US',
+                exchange: 'NYSE',
+                domain: 'chevron.com',
+                sector: 'Energy'
+            },
+            {
+                ticker: 'LLY',
+                companyName: 'Eli Lilly and Company',
+                marketCap: 650000000000,
+                market: 'US',
+                exchange: 'NYSE',
+                domain: 'lilly.com',
+                sector: 'Healthcare'
+            },
+            {
+                ticker: 'ABBV',
+                companyName: 'AbbVie Inc.',
+                marketCap: 320000000000,
+                market: 'US',
+                exchange: 'NYSE',
+                domain: 'abbvie.com',
+                sector: 'Healthcare'
+            },
+            {
+                ticker: 'KO',
+                companyName: 'The Coca-Cola Company',
+                marketCap: 260000000000,
+                market: 'US',
+                exchange: 'NYSE',
+                domain: 'coca-cola.com',
+                sector: 'Consumer Staples'
+            },
+            {
+                ticker: 'PFE',
+                companyName: 'Pfizer Inc.',
+                marketCap: 240000000000,
+                market: 'US',
+                exchange: 'NYSE',
+                domain: 'pfizer.com',
+                sector: 'Healthcare'
+            },
+            {
+                ticker: 'AVGO',
+                companyName: 'Broadcom Inc.',
+                marketCap: 580000000000,
+                market: 'US',
+                exchange: 'NASDAQ',
+                domain: 'broadcom.com',
+                sector: 'Technology'
+            },
+            {
+                ticker: 'TMO',
+                companyName: 'Thermo Fisher Scientific Inc.',
+                marketCap: 220000000000,
+                market: 'US',
+                exchange: 'NYSE',
+                domain: 'thermofisher.com',
+                sector: 'Healthcare'
+            },
+            {
+                ticker: 'COST',
+                companyName: 'Costco Wholesale Corporation',
+                marketCap: 340000000000,
+                market: 'US',
+                exchange: 'NASDAQ',
+                domain: 'costco.com',
+                sector: 'Consumer Staples'
+            },
+            {
+                ticker: 'NFLX',
+                companyName: 'Netflix Inc.',
+                marketCap: 200000000000,
+                market: 'US',
+                exchange: 'NASDAQ',
+                domain: 'netflix.com',
+                sector: 'Communication Services'
+            },
+            {
+                ticker: 'CRM',
+                companyName: 'Salesforce Inc.',
+                marketCap: 210000000000,
+                market: 'US',
+                exchange: 'NYSE',
+                domain: 'salesforce.com',
+                sector: 'Technology'
+            },
+            {
+                ticker: 'ORCL',
+                companyName: 'Oracle Corporation',
+                marketCap: 300000000000,
+                market: 'US',
+                exchange: 'NYSE',
+                domain: 'oracle.com',
+                sector: 'Technology'
+            },
+            {
+                ticker: 'AMD',
+                companyName: 'Advanced Micro Devices Inc.',
+                marketCap: 220000000000,
+                market: 'US',
+                exchange: 'NASDAQ',
+                domain: 'amd.com',
+                sector: 'Technology'
+            },
+            {
+                ticker: 'ADBE',
+                companyName: 'Adobe Inc.',
+                marketCap: 230000000000,
+                market: 'US',
+                exchange: 'NASDAQ',
+                domain: 'adobe.com',
+                sector: 'Technology'
+            },
+            {
+                ticker: 'CSCO',
+                companyName: 'Cisco Systems Inc.',
+                marketCap: 200000000000,
+                market: 'US',
+                exchange: 'NASDAQ',
+                domain: 'cisco.com',
+                sector: 'Technology'
+            },
+            {
+                ticker: 'PEP',
+                companyName: 'PepsiCo Inc.',
+                marketCap: 230000000000,
+                market: 'US',
+                exchange: 'NASDAQ',
+                domain: 'pepsico.com',
+                sector: 'Consumer Staples'
+            },
+            {
+                ticker: 'MRK',
+                companyName: 'Merck & Co. Inc.',
+                marketCap: 280000000000,
+                market: 'US',
+                exchange: 'NYSE',
+                domain: 'merck.com',
+                sector: 'Healthcare'
+            },
+            {
+                ticker: 'BAC',
+                companyName: 'Bank of America Corporation',
+                marketCap: 300000000000,
+                market: 'US',
+                exchange: 'NYSE',
+                domain: 'bankofamerica.com',
+                sector: 'Financial Services'
+            },
+            {
+                ticker: 'XOM',
+                companyName: 'Exxon Mobil Corporation',
+                marketCap: 420000000000,
+                market: 'US',
+                exchange: 'NYSE',
+                domain: 'exxonmobil.com',
+                sector: 'Energy'
+            },
+            {
+                ticker: 'DIS',
+                companyName: 'The Walt Disney Company',
+                marketCap: 200000000000,
+                market: 'US',
+                exchange: 'NYSE',
+                domain: 'disney.com',
+                sector: 'Communication Services'
+            },
+            
+            // Major European stocks
             {
                 ticker: 'ASML',
                 companyName: 'ASML Holding N.V.',
@@ -390,7 +643,7 @@ class StockDataFetcher {
             {
                 ticker: 'NOVO-B.CO',
                 companyName: 'Novo Nordisk A/S',
-                marketCap: 280000000000,
+                marketCap: 480000000000,
                 market: 'EU',
                 exchange: 'CPH',
                 domain: 'novonordisk.com',
@@ -404,6 +657,78 @@ class StockDataFetcher {
                 exchange: 'EPA',
                 domain: 'lvmh.com',
                 sector: 'Consumer Discretionary'
+            },
+            {
+                ticker: 'RMS.PA',
+                companyName: 'Hermès International S.A.',
+                marketCap: 220000000000,
+                market: 'EU',
+                exchange: 'EPA',
+                domain: 'hermes.com',
+                sector: 'Consumer Discretionary'
+            },
+            {
+                ticker: 'SAP.DE',
+                companyName: 'SAP SE',
+                marketCap: 200000000000,
+                market: 'EU',
+                exchange: 'FRA',
+                domain: 'sap.com',
+                sector: 'Technology'
+            },
+            {
+                ticker: 'OR.PA',
+                companyName: "L'Oréal S.A.",
+                marketCap: 210000000000,
+                market: 'EU',
+                exchange: 'EPA',
+                domain: 'loreal.com',
+                sector: 'Consumer Staples'
+            },
+            {
+                ticker: 'TSM',
+                companyName: 'Taiwan Semiconductor Manufacturing Company Limited',
+                marketCap: 500000000000,
+                market: 'Asia',
+                exchange: 'NYSE',
+                domain: 'tsmc.com',
+                sector: 'Technology'
+            },
+            {
+                ticker: 'AZN',
+                companyName: 'AstraZeneca PLC',
+                marketCap: 200000000000,
+                market: 'EU',
+                exchange: 'NASDAQ',
+                domain: 'astrazeneca.com',
+                sector: 'Healthcare'
+            },
+            {
+                ticker: 'SHEL',
+                companyName: 'Shell plc',
+                marketCap: 230000000000,
+                market: 'EU',
+                exchange: 'NYSE',
+                domain: 'shell.com',
+                sector: 'Energy'
+            },
+            {
+                ticker: 'NOVN.SW',
+                companyName: 'Novartis AG',
+                marketCap: 220000000000,
+                market: 'EU',
+                exchange: 'SWX',
+                domain: 'novartis.com',
+                sector: 'Healthcare'
+            },
+            {
+                ticker: 'ROG.SW',
+                companyName: 'Roche Holding AG',
+                marketCap: 250000000000,
+                market: 'EU',
+                exchange: 'SWX',
+                domain: 'roche.com',
+                sector: 'Healthcare'
             }
         ];
     }

@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "2025-06-24T19:08:00.000Z",
+  "lastUpdated": "2025-06-24T20:07:13.927Z",
   "dataSource": "Sample Data",
-  "totalStocks": 15,
+  "totalStocks": 47,
   "stocks": [
     {
       "ticker": "AAPL",
@@ -22,6 +22,15 @@
       "sector": "Technology"
     },
     {
+      "ticker": "NVDA",
+      "companyName": "NVIDIA Corporation",
+      "marketCap": 1800000000000,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "nvidia.com",
+      "sector": "Technology"
+    },
+    {
       "ticker": "GOOGL",
       "companyName": "Alphabet Inc.",
       "marketCap": 1700000000000,
@@ -38,15 +47,6 @@
       "exchange": "NASDAQ",
       "domain": "amazon.com",
       "sector": "Consumer Discretionary"
-    },
-    {
-      "ticker": "NVDA",
-      "companyName": "NVIDIA Corporation",
-      "marketCap": 1800000000000,
-      "market": "US",
-      "exchange": "NASDAQ",
-      "domain": "nvidia.com",
-      "sector": "Technology"
     },
     {
       "ticker": "BRK.A",
@@ -76,6 +76,33 @@
       "sector": "Technology"
     },
     {
+      "ticker": "LLY",
+      "companyName": "Eli Lilly and Company",
+      "marketCap": 650000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "lilly.com",
+      "sector": "Healthcare"
+    },
+    {
+      "ticker": "AVGO",
+      "companyName": "Broadcom Inc.",
+      "marketCap": 580000000000,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "broadcom.com",
+      "sector": "Technology"
+    },
+    {
+      "ticker": "V",
+      "companyName": "Visa Inc.",
+      "marketCap": 520000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "visa.com",
+      "sector": "Financial Services"
+    },
+    {
       "ticker": "UNH",
       "companyName": "UnitedHealth Group Incorporated",
       "marketCap": 500000000000,
@@ -83,6 +110,42 @@
       "exchange": "NYSE",
       "domain": "unitedhealthgroup.com",
       "sector": "Healthcare"
+    },
+    {
+      "ticker": "TSM",
+      "companyName": "Taiwan Semiconductor Manufacturing Company Limited",
+      "marketCap": 500000000000,
+      "market": "Asia",
+      "exchange": "NYSE",
+      "domain": "tsmc.com",
+      "sector": "Technology"
+    },
+    {
+      "ticker": "WMT",
+      "companyName": "Walmart Inc.",
+      "marketCap": 480000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "walmart.com",
+      "sector": "Consumer Staples"
+    },
+    {
+      "ticker": "NOVO-B.CO",
+      "companyName": "Novo Nordisk A/S",
+      "marketCap": 480000000000,
+      "market": "EU",
+      "exchange": "CPH",
+      "domain": "novonordisk.com",
+      "sector": "Healthcare"
+    },
+    {
+      "ticker": "JPM",
+      "companyName": "JPMorgan Chase & Co.",
+      "marketCap": 460000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "jpmorganchase.com",
+      "sector": "Financial Services"
     },
     {
       "ticker": "JNJ",
@@ -94,12 +157,93 @@
       "sector": "Healthcare"
     },
     {
-      "ticker": "V",
-      "companyName": "Visa Inc.",
-      "marketCap": 520000000000,
+      "ticker": "XOM",
+      "companyName": "Exxon Mobil Corporation",
+      "marketCap": 420000000000,
       "market": "US",
       "exchange": "NYSE",
-      "domain": "visa.com",
+      "domain": "exxonmobil.com",
+      "sector": "Energy"
+    },
+    {
+      "ticker": "MA",
+      "companyName": "Mastercard Incorporated",
+      "marketCap": 400000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "mastercard.com",
+      "sector": "Financial Services"
+    },
+    {
+      "ticker": "LVMH.PA",
+      "companyName": "LVMH Moët Hennessy Louis Vuitton SE",
+      "marketCap": 400000000000,
+      "market": "EU",
+      "exchange": "EPA",
+      "domain": "lvmh.com",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "ticker": "PG",
+      "companyName": "The Procter & Gamble Company",
+      "marketCap": 380000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "pg.com",
+      "sector": "Consumer Staples"
+    },
+    {
+      "ticker": "HD",
+      "companyName": "The Home Depot Inc.",
+      "marketCap": 350000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "homedepot.com",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "ticker": "NESN.SW",
+      "companyName": "Nestlé S.A.",
+      "marketCap": 350000000000,
+      "market": "EU",
+      "exchange": "SWX",
+      "domain": "nestle.com",
+      "sector": "Consumer Staples"
+    },
+    {
+      "ticker": "COST",
+      "companyName": "Costco Wholesale Corporation",
+      "marketCap": 340000000000,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "costco.com",
+      "sector": "Consumer Staples"
+    },
+    {
+      "ticker": "ABBV",
+      "companyName": "AbbVie Inc.",
+      "marketCap": 320000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "abbvie.com",
+      "sector": "Healthcare"
+    },
+    {
+      "ticker": "ORCL",
+      "companyName": "Oracle Corporation",
+      "marketCap": 300000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "oracle.com",
+      "sector": "Technology"
+    },
+    {
+      "ticker": "BAC",
+      "companyName": "Bank of America Corporation",
+      "marketCap": 300000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "bankofamerica.com",
       "sector": "Financial Services"
     },
     {
@@ -112,31 +256,175 @@
       "sector": "Technology"
     },
     {
-      "ticker": "NESN.SW",
-      "companyName": "Nestlé S.A.",
-      "marketCap": 350000000000,
-      "market": "EU",
-      "exchange": "SWX",
-      "domain": "nestle.com",
-      "sector": "Consumer Staples"
+      "ticker": "CVX",
+      "companyName": "Chevron Corporation",
+      "marketCap": 290000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "chevron.com",
+      "sector": "Energy"
     },
     {
-      "ticker": "NOVO-B.CO",
-      "companyName": "Novo Nordisk A/S",
+      "ticker": "MRK",
+      "companyName": "Merck & Co. Inc.",
       "marketCap": 280000000000,
-      "market": "EU",
-      "exchange": "CPH",
-      "domain": "novonordisk.com",
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "merck.com",
       "sector": "Healthcare"
     },
     {
-      "ticker": "LVMH.PA",
-      "companyName": "LVMH Moët Hennessy Louis Vuitton SE",
-      "marketCap": 400000000000,
+      "ticker": "KO",
+      "companyName": "The Coca-Cola Company",
+      "marketCap": 260000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "coca-cola.com",
+      "sector": "Consumer Staples"
+    },
+    {
+      "ticker": "ROG.SW",
+      "companyName": "Roche Holding AG",
+      "marketCap": 250000000000,
+      "market": "EU",
+      "exchange": "SWX",
+      "domain": "roche.com",
+      "sector": "Healthcare"
+    },
+    {
+      "ticker": "PFE",
+      "companyName": "Pfizer Inc.",
+      "marketCap": 240000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "pfizer.com",
+      "sector": "Healthcare"
+    },
+    {
+      "ticker": "ADBE",
+      "companyName": "Adobe Inc.",
+      "marketCap": 230000000000,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "adobe.com",
+      "sector": "Technology"
+    },
+    {
+      "ticker": "PEP",
+      "companyName": "PepsiCo Inc.",
+      "marketCap": 230000000000,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "pepsico.com",
+      "sector": "Consumer Staples"
+    },
+    {
+      "ticker": "SHEL",
+      "companyName": "Shell plc",
+      "marketCap": 230000000000,
+      "market": "EU",
+      "exchange": "NYSE",
+      "domain": "shell.com",
+      "sector": "Energy"
+    },
+    {
+      "ticker": "TMO",
+      "companyName": "Thermo Fisher Scientific Inc.",
+      "marketCap": 220000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "thermofisher.com",
+      "sector": "Healthcare"
+    },
+    {
+      "ticker": "AMD",
+      "companyName": "Advanced Micro Devices Inc.",
+      "marketCap": 220000000000,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "amd.com",
+      "sector": "Technology"
+    },
+    {
+      "ticker": "RMS.PA",
+      "companyName": "Hermès International S.A.",
+      "marketCap": 220000000000,
       "market": "EU",
       "exchange": "EPA",
-      "domain": "lvmh.com",
+      "domain": "hermes.com",
       "sector": "Consumer Discretionary"
+    },
+    {
+      "ticker": "NOVN.SW",
+      "companyName": "Novartis AG",
+      "marketCap": 220000000000,
+      "market": "EU",
+      "exchange": "SWX",
+      "domain": "novartis.com",
+      "sector": "Healthcare"
+    },
+    {
+      "ticker": "CRM",
+      "companyName": "Salesforce Inc.",
+      "marketCap": 210000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "salesforce.com",
+      "sector": "Technology"
+    },
+    {
+      "ticker": "OR.PA",
+      "companyName": "L'Oréal S.A.",
+      "marketCap": 210000000000,
+      "market": "EU",
+      "exchange": "EPA",
+      "domain": "loreal.com",
+      "sector": "Consumer Staples"
+    },
+    {
+      "ticker": "NFLX",
+      "companyName": "Netflix Inc.",
+      "marketCap": 200000000000,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "netflix.com",
+      "sector": "Communication Services"
+    },
+    {
+      "ticker": "CSCO",
+      "companyName": "Cisco Systems Inc.",
+      "marketCap": 200000000000,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "cisco.com",
+      "sector": "Technology"
+    },
+    {
+      "ticker": "DIS",
+      "companyName": "The Walt Disney Company",
+      "marketCap": 200000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "disney.com",
+      "sector": "Communication Services"
+    },
+    {
+      "ticker": "SAP.DE",
+      "companyName": "SAP SE",
+      "marketCap": 200000000000,
+      "market": "EU",
+      "exchange": "FRA",
+      "domain": "sap.com",
+      "sector": "Technology"
+    },
+    {
+      "ticker": "AZN",
+      "companyName": "AstraZeneca PLC",
+      "marketCap": 200000000000,
+      "market": "EU",
+      "exchange": "NASDAQ",
+      "domain": "astrazeneca.com",
+      "sector": "Healthcare"
     }
   ]
 }
