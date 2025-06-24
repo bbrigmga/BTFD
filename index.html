@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Screener - Large Cap Stocks ($200B+)</title>
+    <meta name="description" content="Free stock screening website displaying US and European stocks with market cap over $200 billion">
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://logo.clearbit.com">
+    <link rel="dns-prefetch" href="https://logo.clearbit.com">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title">
+                    <span class="title-main">Stock Screener</span>
+                    <span class="title-sub">Large Cap Stocks ($200B+)</span>
+                </h1>
+                <div class="header-info">
+                    <div class="last-updated">
+                        <span class="label">Last Updated:</span>
+                        <span id="last-updated-time">Loading...</span>
+                    </div>
+                    <div class="stock-count">
+                        <span class="label">Stocks:</span>
+                        <span id="stock-count">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Loading State -->
+            <div id="loading-state" class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Loading stock data...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="error-state" class="error-state" style="display: none;">
+                <div class="error-icon">⚠️</div>
+                <h2>Unable to Load Stock Data</h2>
+                <p>We're having trouble loading the latest stock information. Please try refreshing the page.</p>
+                <button id="retry-button" class="retry-button">Retry</button>
+            </div>
+
+            <!-- Filters -->
+            <div id="filters" class="filters" style="display: none;">
+                <div class="filter-group">
+                    <label for="market-filter">Market:</label>
+                    <select id="market-filter">
+                        <option value="all">All Markets</option>
+                        <option value="US">US Markets</option>
+                        <option value="EU">European Markets</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="sort-filter">Sort by:</label>
+                    <select id="sort-filter">
+                        <option value="marketCap">Market Cap (Largest)</option>
+                        <option value="ticker">Ticker (A-Z)</option>
+                        <option value="company">Company Name (A-Z)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Stock Grid -->
+            <div id="stock-grid" class="stock-grid" style="display: none;">
+                <!-- Stock cards will be dynamically inserted here -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Stock Screener. Data provided by IEX Cloud. Not investment advice.</p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">About</a>
+                    <a href="#" class="footer-link">Privacy</a>
+                    <a href="#" class="footer-link">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+  "name": "stock-screener",
+  "version": "1.0.0",
+  "description": "A free stock screening website displaying US and European stocks with market cap over $200 billion",
+  "main": "index.html",
+  "scripts": {
+    "fetch-data": "node scripts/fetch-data.js",
+    "dev": "python -m http.server 8000 || python3 -m http.server 8000 || npx serve .",
+    "build": "npm run fetch-data",
+    "test": "node scripts/fetch-data.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/stock-screener.git"
+  },
+  "keywords": [
+    "stocks",
+    "finance",
+    "screening",
+    "market-cap",
+    "investment",
+    "javascript",
+    "html",
+    "css"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/stock-screener/issues"
+  },
+  "homepage": "https://yourusername.github.io/stock-screener/",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

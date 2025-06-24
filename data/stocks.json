@@ -1,0 +1,142 @@
+{
+  "lastUpdated": "2025-06-24T19:08:00.000Z",
+  "dataSource": "Sample Data",
+  "totalStocks": 15,
+  "stocks": [
+    {
+      "ticker": "AAPL",
+      "companyName": "Apple Inc.",
+      "marketCap": 3000000000000,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "apple.com",
+      "sector": "Technology"
+    },
+    {
+      "ticker": "MSFT",
+      "companyName": "Microsoft Corporation",
+      "marketCap": 2800000000000,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "microsoft.com",
+      "sector": "Technology"
+    },
+    {
+      "ticker": "GOOGL",
+      "companyName": "Alphabet Inc.",
+      "marketCap": 1700000000000,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "google.com",
+      "sector": "Technology"
+    },
+    {
+      "ticker": "AMZN",
+      "companyName": "Amazon.com Inc.",
+      "marketCap": 1500000000000,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "amazon.com",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "ticker": "NVDA",
+      "companyName": "NVIDIA Corporation",
+      "marketCap": 1800000000000,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "nvidia.com",
+      "sector": "Technology"
+    },
+    {
+      "ticker": "BRK.A",
+      "companyName": "Berkshire Hathaway Inc.",
+      "marketCap": 900000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "berkshirehathaway.com",
+      "sector": "Financial Services"
+    },
+    {
+      "ticker": "TSLA",
+      "companyName": "Tesla Inc.",
+      "marketCap": 800000000000,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "tesla.com",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "ticker": "META",
+      "companyName": "Meta Platforms Inc.",
+      "marketCap": 750000000000,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "meta.com",
+      "sector": "Technology"
+    },
+    {
+      "ticker": "UNH",
+      "companyName": "UnitedHealth Group Incorporated",
+      "marketCap": 500000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "unitedhealthgroup.com",
+      "sector": "Healthcare"
+    },
+    {
+      "ticker": "JNJ",
+      "companyName": "Johnson & Johnson",
+      "marketCap": 450000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "jnj.com",
+      "sector": "Healthcare"
+    },
+    {
+      "ticker": "V",
+      "companyName": "Visa Inc.",
+      "marketCap": 520000000000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "visa.com",
+      "sector": "Financial Services"
+    },
+    {
+      "ticker": "ASML",
+      "companyName": "ASML Holding N.V.",
+      "marketCap": 300000000000,
+      "market": "EU",
+      "exchange": "AMS",
+      "domain": "asml.com",
+      "sector": "Technology"
+    },
+    {
+      "ticker": "NESN.SW",
+      "companyName": "Nestlé S.A.",
+      "marketCap": 350000000000,
+      "market": "EU",
+      "exchange": "SWX",
+      "domain": "nestle.com",
+      "sector": "Consumer Staples"
+    },
+    {
+      "ticker": "NOVO-B.CO",
+      "companyName": "Novo Nordisk A/S",
+      "marketCap": 280000000000,
+      "market": "EU",
+      "exchange": "CPH",
+      "domain": "novonordisk.com",
+      "sector": "Healthcare"
+    },
+    {
+      "ticker": "LVMH.PA",
+      "companyName": "LVMH Moët Hennessy Louis Vuitton SE",
+      "marketCap": 400000000000,
+      "market": "EU",
+      "exchange": "EPA",
+      "domain": "lvmh.com",
+      "sector": "Consumer Discretionary"
+    }
+  ]
+}
