@@ -1,6 +1,6 @@
 # Stock Screener - Large Cap Stocks ($200B+)
 
-A free, responsive stock screening website that displays US and European stocks with market capitalization over $200 billion. Features a modern card-based layout with company logos, real-time data updates, and mobile-responsive design.
+A free, responsive stock screening website that displays US and European stocks with market capitalization over $200 billion. Features a modern card-based layout with company logos, real-time data updates, and mobile-responsive design. Uses a hybrid approach with the top 100 S&P 500 companies for comprehensive US coverage while maintaining curated European stock selection.
 
 ## 🚀 Live Demo
 
@@ -9,7 +9,7 @@ Visit the live website: [Your GitHub Pages URL]
 ## ✨ Features
 
 - **Large Cap Focus**: Only displays stocks with market cap > $200 billion
-- **Global Coverage**: US and European markets
+- **Hybrid Coverage**: Top 100 S&P 500 companies (US) + curated European selection
 - **Real-time Data**: Daily updates at market close via GitHub Actions
 - **Responsive Design**: Optimized for desktop, tablet, and mobile
 - **Company Logos**: Automatic logo fetching with fallbacks
@@ -17,11 +17,12 @@ Visit the live website: [Your GitHub Pages URL]
 - **Offline Support**: Cached data for offline viewing
 - **Filtering & Sorting**: Filter by market, sort by various criteria
 
-## 📊 Data Sources
+## 📊 Data Sources & Coverage
 
-- **Primary**: [Polygon.io](https://polygon.io/) - US market data
-- **Secondary**: [Finnhub](https://finnhub.io/) - European market data
-- **Logos**: [Clearbit Logo API](https://clearbit.com/logo) - Company logos
+- **US Stocks**: [Polygon.io](https://polygon.io/) - Top 100 S&P 500 companies by market cap
+- **European Stocks**: [Finnhub](https://finnhub.io/) - Curated selection of major EU companies
+- **Company Logos**: [Clearbit Logo API](https://clearbit.com/logo) - Automatic logo fetching
+- **Coverage Strategy**: Hybrid approach combining comprehensive US coverage with targeted European selection
 
 ## 🛠️ Technology Stack
 
@@ -171,23 +172,24 @@ npm run fetch-data
 Edit `scripts/fetch-data.js` and add tickers to the appropriate arrays:
 
 ```javascript
-// For US stocks (add to majorTickers array)
+// For US stocks (add to majorTickers array - Top 100 S&P 500)
 const majorTickers = [
     'AAPL', 'MSFT', 'GOOGL', 'YOUR_TICKER'
-    // ... 80+ other major stocks already included
+    // ... Top 100 S&P 500 companies by market cap already included
 ];
 
 // For European stocks (add to europeanTickers array)
 const europeanTickers = [
     { symbol: 'YOUR_SYMBOL.EX', name: 'Company Name', domain: 'company.com' }
-    // ... 18+ European stocks already included
+    // ... 18+ carefully selected European stocks already included
 ];
 ```
 
 **Current Stock Coverage:**
-- **US Stocks**: 80+ major companies including all mega-cap (>$1T) and large-cap (>$200B) stocks
-- **European Stocks**: 18+ major European companies from Netherlands, Switzerland, Denmark, France, Germany, and UK
-- **Total Expected**: 50-60+ stocks with market cap > $200B (depending on current market conditions)
+- **US Stocks**: Top 100 S&P 500 companies by market capitalization, ensuring comprehensive coverage of all mega-cap (>$1T) and large-cap stocks
+- **European Stocks**: 18+ carefully selected major European companies from Netherlands, Switzerland, Denmark, France, Germany, and UK
+- **Total Expected**: 60-70+ stocks with market cap > $200B (depending on current market conditions)
+- **Coverage Strategy**: Hybrid approach maximizes US market coverage while maintaining quality European representation
 
 ### Styling Changes
 

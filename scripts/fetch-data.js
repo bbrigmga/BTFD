@@ -81,21 +81,24 @@ class StockDataFetcher {
         
         try {
             // Get list of major US stocks (S&P 500 components or similar)
+            // Top 100 S&P 500 companies by market capitalization
             const majorTickers = [
                 // Mega-cap stocks (>$1T)
                 'AAPL', 'MSFT', 'GOOGL', 'GOOG', 'AMZN', 'NVDA', 'META', 'TSLA',
                 
-                // Large-cap stocks ($200B+)
-                'BRK.A', 'BRK.B', 'UNH', 'JNJ', 'V', 'WMT', 'XOM', 'JPM', 'PG', 'MA',
-                'CVX', 'HD', 'ABBV', 'PFE', 'KO', 'AVGO', 'PEP', 'TMO', 'COST', 'MRK',
-                'BAC', 'NFLX', 'CRM', 'ACN', 'LLY', 'ADBE', 'CSCO', 'NKE', 'DHR', 'TXN',
-                'VZ', 'QCOM', 'ABT', 'ORCL', 'WFC', 'AMD', 'INTC', 'CMCSA', 'DIS', 'PM',
-                'SPGI', 'NOW', 'INTU', 'CAT', 'GS', 'RTX', 'BKNG', 'HON', 'IBM', 'AMGN',
-                'LOW', 'UPS', 'T', 'SBUX', 'AXP', 'BLK', 'GILD', 'MDT', 'C', 'LRCX',
-                'ISRG', 'TJX', 'SCHW', 'MU', 'AMAT', 'PANW', 'SYK', 'VRTX', 'ADI', 'TMUS',
-                'PLD', 'MDLZ', 'CB', 'SO', 'REGN', 'ZTS', 'MMC', 'KLAC', 'ICE', 'DUK',
-                'PYPL', 'AON', 'EQIX', 'APD', 'CME', 'CDNS', 'MSI', 'SNPS', 'ITW', 'WM',
-                'CL', 'GD', 'ADSK', 'USB', 'TFC', 'MMM', 'PNC', 'ORLY', 'FCX', 'SHW'
+                // Large-cap stocks ($200B+) - Top 100 S&P 500 by market cap
+                'BRK.A', 'BRK.B', 'LLY', 'UNH', 'V', 'JNJ', 'WMT', 'JPM', 'PG', 'HD',
+                'MA', 'CVX', 'ABBV', 'KO', 'PFE', 'AVGO', 'TMO', 'COST', 'MRK', 'BAC',
+                'NFLX', 'CRM', 'ORCL', 'AMD', 'ADBE', 'CSCO', 'PEP', 'DIS', 'SPGI', 'NOW',
+                'INTU', 'CAT', 'GS', 'RTX', 'BKNG', 'HON', 'IBM', 'AMGN', 'LOW', 'UPS',
+                'T', 'SBUX', 'AXP', 'BLK', 'GILD', 'MDT', 'C', 'LRCX', 'ISRG', 'TJX',
+                'SCHW', 'MU', 'AMAT', 'PANW', 'SYK', 'VRTX', 'ADI', 'TMUS', 'PLD', 'MDLZ',
+                'CB', 'SO', 'REGN', 'ZTS', 'MMC', 'KLAC', 'ICE', 'DUK', 'PYPL', 'AON',
+                'EQIX', 'APD', 'CME', 'CDNS', 'MSI', 'SNPS', 'ITW', 'WM', 'CL', 'GD',
+                'ADSK', 'USB', 'TFC', 'MMM', 'PNC', 'ORLY', 'FCX', 'SHW', 'BSX', 'MO',
+                'WELL', 'DE', 'CARR', 'TGT', 'BDX', 'CHTR', 'FI', 'UBER', 'NEE', 'LIN',
+                'PM', 'XOM', 'ACN', 'NKE', 'DHR', 'TXN', 'VZ', 'QCOM', 'ABT', 'WFC',
+                'INTC', 'CMCSA', 'COP', 'SPXC', 'ELV', 'ABNB', 'ROP', 'FAST', 'DXCM'
             ];
             
             // Fetch data in batches to respect rate limits (Polygon.io: 5 calls per minute for free tier)
