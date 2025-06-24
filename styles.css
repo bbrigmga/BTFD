@@ -20,7 +20,7 @@ body {
 
 /* Header Styles */
 .header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #4A90E2 0%, #87CEEB 100%);
     color: white;
     padding: 2rem 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -32,6 +32,19 @@ body {
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.site-logo {
+    height: 300px;
+    width: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .site-title {
@@ -364,6 +377,15 @@ body {
         flex-direction: column;
         text-align: center;
         gap: 1.5rem;
+    }
+    
+    .header-left {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .site-logo {
+        height: 95px;
     }
     
     .title-main {
