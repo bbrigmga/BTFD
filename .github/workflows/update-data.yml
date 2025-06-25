@@ -21,6 +21,15 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
     
+    - name: Debug - List files in workspace
+      run: |
+        echo "Current working directory:"
+        pwd
+        echo "Files in current directory:"
+        ls -la
+        echo "Looking for package files:"
+        find . -name "package*.json" -type f
+    
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
