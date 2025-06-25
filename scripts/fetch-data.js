@@ -28,27 +28,38 @@ class StockDataFetcher {
 
     async fetchStockData() {
         console.log('Starting stock data fetch...');
+        console.log('API Key Status:');
+        console.log(`- POLYGON_API_KEY: ${this.polygonApiKey ? 'Available' : 'Missing'}`);
+        console.log(`- FINNHUB_API_KEY: ${this.finnhubApiKey ? 'Available' : 'Missing'}`);
         
         try {
             let stocks = [];
             
             if (this.polygonApiKey) {
+                console.log('Attempting to fetch US stocks from Polygon.io...');
                 // Fetch US stocks from Polygon.io
                 const usStocks = await this.fetchUSStocks();
                 stocks = stocks.concat(usStocks);
-                console.log(`Fetched ${usStocks.length} US stocks`);
+                console.log(`Fetched ${usStocks.length} US stocks from Polygon.io`);
+            } else {
+                console.log('Skipping US stocks - POLYGON_API_KEY not available');
             }
             
             if (this.finnhubApiKey) {
+                console.log('Attempting to fetch European stocks from Finnhub...');
                 // Fetch European stocks from Finnhub
                 const euStocks = await this.fetchEuropeanStocks();
                 stocks = stocks.concat(euStocks);
-                console.log(`Fetched ${euStocks.length} European stocks`);
+                console.log(`Fetched ${euStocks.length} European stocks from Finnhub`);
+            } else {
+                console.log('Skipping European stocks - FINNHUB_API_KEY not available');
             }
             
             if (stocks.length === 0) {
-                console.log('No API keys available, using enhanced sample data');
+                console.log('No API data retrieved, using enhanced sample data');
                 stocks = this.getSampleData();
+            } else {
+                console.log(`Successfully fetched ${stocks.length} stocks from APIs`);
             }
             
             // Filter by market cap threshold
