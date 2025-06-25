@@ -29,6 +29,9 @@
     "url": "https://github.com/yourusername/stock-screener/issues"
   },
   "homepage": "https://yourusername.github.io/stock-screener/",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  },
   "devDependencies": {
     "serve": "^14.2.1"
   },
