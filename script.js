@@ -81,6 +81,7 @@ class StockScreener {
         
         try {
             // Try to load from the generated data file first
+            console.log('Attempting to load stock data from ./data/stocks.json');
             const response = await fetch('./data/stocks.json');
             
             if (!response.ok) {
@@ -88,6 +89,7 @@ class StockScreener {
             }
             
             const data = await response.json();
+            console.log('Successfully loaded data:', data);
             this.stocks = data.stocks || [];
             this.updateLastUpdated(data.lastUpdated);
             
@@ -95,15 +97,18 @@ class StockScreener {
                 throw new Error('No stock data available');
             }
             
+            console.log(`Loaded ${this.stocks.length} stocks from data file`);
             this.applyFilters();
             this.showStockGrid();
             
         } catch (error) {
             console.error('Failed to load stock data:', error);
+            console.log('Attempting fallback options...');
             
             // Try to load cached data from localStorage
             const cachedData = this.loadCachedData();
             if (cachedData) {
+                console.log('Using cached data');
                 this.stocks = cachedData.stocks;
                 this.updateLastUpdated(cachedData.lastUpdated);
                 this.applyFilters();
@@ -111,6 +116,7 @@ class StockScreener {
                 this.showCacheNotice();
             } else {
                 // Load sample data for demonstration
+                console.log('Using sample data as final fallback');
                 this.loadSampleData();
                 this.applyFilters();
                 this.showStockGrid();
