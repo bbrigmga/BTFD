@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "2025-06-25T14:39:40.114Z",
+  "lastUpdated": "2025-06-25T15:35:25.038Z",
   "dataSource": "Polygon.io API",
-  "totalStocks": 9,
+  "totalStocks": 11,
   "stocks": [
     {
       "ticker": "TSM",
@@ -58,31 +58,49 @@
       "sector": "SERVICES-COMPUTER PROGRAMMING, DATA PROCESSING, ETC."
     },
     {
-      "ticker": "AVGO",
-      "companyName": "Broadcom Inc. Common Stock",
-      "marketCap": 1172904558033.23,
+      "ticker": "NFLX",
+      "companyName": "NetFlix Inc",
+      "marketCap": 519482077268.22003,
       "market": "US",
       "exchange": "NASDAQ",
-      "domain": "broadcom.com",
-      "sector": "SEMICONDUCTORS & RELATED DEVICES"
+      "domain": "netflix.com",
+      "sector": "SERVICES-VIDEO TAPE RENTAL"
     },
     {
-      "ticker": "ABBV",
-      "companyName": "ABBVIE INC.",
-      "marketCap": 327632433447.95996,
+      "ticker": "COST",
+      "companyName": "Costco Wholesale Corp",
+      "marketCap": 433596416523.92,
       "market": "US",
-      "exchange": "NYSE",
-      "domain": "abbvie.com",
-      "sector": "PHARMACEUTICAL PREPARATIONS"
+      "exchange": "NASDAQ",
+      "domain": "costco.com",
+      "sector": "RETAIL-VARIETY STORES"
     },
     {
-      "ticker": "KO",
-      "companyName": "Coca-Cola Company",
-      "marketCap": 299663050299.56,
+      "ticker": "BAC",
+      "companyName": "Bank of America Corporation",
+      "marketCap": 333134880035.69,
       "market": "US",
       "exchange": "NYSE",
-      "domain": "coca-colacompany.com",
-      "sector": "BEVERAGES"
+      "domain": "bankofamerica.com",
+      "sector": "NATIONAL COMMERCIAL BANKS"
+    },
+    {
+      "ticker": "CRM",
+      "companyName": "Salesforce, Inc.",
+      "marketCap": 251198560000,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "salesforce.com",
+      "sector": "SERVICES-PREPACKAGED SOFTWARE"
+    },
+    {
+      "ticker": "AXP",
+      "companyName": "American Express Company",
+      "marketCap": 205139427024.7,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "americanexpress.com",
+      "sector": "FINANCE SERVICES"
     }
   ]
 }
