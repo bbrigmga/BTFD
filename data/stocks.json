@@ -1,0 +1,88 @@
+{
+  "lastUpdated": "2025-06-25T14:39:40.114Z",
+  "dataSource": "Polygon.io API",
+  "totalStocks": 9,
+  "stocks": [
+    {
+      "ticker": "TSM",
+      "companyName": "Taiwan Semiconductor Manufacturing Company Limited",
+      "marketCap": 27229245996094,
+      "market": "EU",
+      "exchange": "EU",
+      "domain": "tsmc.com",
+      "sector": "Semiconductors"
+    },
+    {
+      "ticker": "MSFT",
+      "companyName": "Microsoft Corp",
+      "marketCap": 3553053269224.6,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "microsoft.com",
+      "sector": "SERVICES-PREPACKAGED SOFTWARE"
+    },
+    {
+      "ticker": "AAPL",
+      "companyName": "Apple Inc.",
+      "marketCap": 2922044998640,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "apple.com",
+      "sector": "ELECTRONIC COMPUTERS"
+    },
+    {
+      "ticker": "AMZN",
+      "companyName": "Amazon.Com Inc",
+      "marketCap": 2280604824071.7397,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "amazon.com",
+      "sector": "RETAIL-CATALOG & MAIL-ORDER HOUSES"
+    },
+    {
+      "ticker": "GOOG",
+      "companyName": "Alphabet Inc. Class C Capital Stock",
+      "marketCap": 2150641965100.88,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "abc.xyz",
+      "sector": "SERVICES-COMPUTER PROGRAMMING, DATA PROCESSING, ETC."
+    },
+    {
+      "ticker": "GOOGL",
+      "companyName": "Alphabet Inc. Class A Common Stock",
+      "marketCap": 2135109483493.2,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "abc.xyz",
+      "sector": "SERVICES-COMPUTER PROGRAMMING, DATA PROCESSING, ETC."
+    },
+    {
+      "ticker": "AVGO",
+      "companyName": "Broadcom Inc. Common Stock",
+      "marketCap": 1172904558033.23,
+      "market": "US",
+      "exchange": "NASDAQ",
+      "domain": "broadcom.com",
+      "sector": "SEMICONDUCTORS & RELATED DEVICES"
+    },
+    {
+      "ticker": "ABBV",
+      "companyName": "ABBVIE INC.",
+      "marketCap": 327632433447.95996,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "abbvie.com",
+      "sector": "PHARMACEUTICAL PREPARATIONS"
+    },
+    {
+      "ticker": "KO",
+      "companyName": "Coca-Cola Company",
+      "marketCap": 299663050299.56,
+      "market": "US",
+      "exchange": "NYSE",
+      "domain": "coca-colacompany.com",
+      "sector": "BEVERAGES"
+    }
+  ]
+}
